@@ -9,6 +9,7 @@ terraform {
 provider "aws" {
   region = "ap-south-1"
 }
+/*
 resource "aws_s3_bucket" "product_assets" {
   bucket = local.bucket_name
   tags = {
@@ -16,6 +17,7 @@ resource "aws_s3_bucket" "product_assets" {
     Purpose     = "product-assets"
   }
 }
+*/
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
   tags = {
@@ -46,6 +48,7 @@ resource "aws_security_group" "web" {
     Purpose     = "ecommerce-web"
   }
 }
+/*
 resource "aws_instance" "web" {
   ami           = "ami-08e3b3155fc937a94"
   instance_type = "t3.micro"
@@ -57,4 +60,9 @@ resource "aws_instance" "web" {
     Environment = var.environment
     Purpose     = "ecommerce-web"
   }
+}
+*/
+resource "aws_s3_bucket" "storage" {
+  for_each = local.storage_requirements
+  bucket   = "ecommerce-${var.environment}-${each.value}-vyshma"
 }
