@@ -10,7 +10,7 @@ provider "aws" {
   region = "ap-south-1"
 }
 resource "aws_s3_bucket" "product_assets" {
-  bucket = "ecommerce-dev-product-assets-vyshma"
+  bucket = local.bucket_name
   tags = {
     Environment = "dev"
     Purpose     = "product-assets"
