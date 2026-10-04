@@ -61,8 +61,9 @@ resource "aws_instance" "web" {
     Purpose     = "ecommerce-web"
   }
 }
-*/
 resource "aws_s3_bucket" "storage" {
   for_each = local.storage_requirements
   bucket   = "ecommerce-${var.environment}-${each.value}-vyshma"
 }
+*/
+data "aws_region" "current" {}

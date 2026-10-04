@@ -8,3 +8,7 @@ output "bucket_arn" {
   value       = aws_s3_bucket.product_assets.arn
 }
 */
+output "current_region" {
+  description = "AWS region detected by the Terraform AWS provider"
+  value       = data.aws_region.current.name
+}

@@ -11,3 +11,7 @@ locals {
 locals {
   versioning_enabled = var.environment == "prod" ? true : false
 }
+
+locals {
+  current_region = data.aws_region.current.name
+}
